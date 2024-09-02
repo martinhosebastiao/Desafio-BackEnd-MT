@@ -96,9 +96,9 @@ namespace MotoBusiness.Internal.Domain.Core.Entities.Rentals
         /// <summary>
         /// Finalizar a locação, calculando multas e diarias adicionais.
         /// </summary>
-        public void FinishRental()
+        public void FinishRental(DateTime returnDate)
         {
-            ActualEndDate = DateTime.UtcNow;
+            ActualEndDate = returnDate;
 
             if (ActualEndDate < ExpectedEndDate)
             {

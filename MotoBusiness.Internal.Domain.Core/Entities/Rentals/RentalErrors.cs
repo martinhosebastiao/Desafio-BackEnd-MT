@@ -11,7 +11,7 @@ namespace MotoBusiness.Internal.Domain.Core.Entities.Rentals
         public static Error Invalid_Plan => new(
         "Retail.Failed", $"Plano inválido.");
 
-        public static Error Rental_Notfound => new(
+        public static Error Notfound => new(
         "Retail.Notfound", $"Locação não encontrada.");
     }
 }

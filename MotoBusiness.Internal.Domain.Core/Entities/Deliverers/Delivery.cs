@@ -101,10 +101,16 @@ namespace MotoBusiness.Internal.Domain.Core.Entities.Deliverers
             BirthDate = birthdate;
         }
 
+        public bool CheckSuitableForAllocation()
+        {
+            return CNH.Type == CNHType.A || CNH.Type == CNHType.AB;
+        }
+
         public void AddRental(Rental rental)
         {
             Rentals.Add(rental);
         }
+
         #endregion
     }
 }

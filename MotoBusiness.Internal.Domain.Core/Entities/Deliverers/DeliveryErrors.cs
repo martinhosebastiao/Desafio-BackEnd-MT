@@ -19,7 +19,7 @@ namespace MotoBusiness.Internal.Domain.Core.Entities.Deliverers
         public static Error CNH_ImageInvalid => new(
         "Delivery.Invalid", $"A fotografia da CNH é invalida.");
 
-        public static Error DeliveryNotFound => new(
+        public static Error NotFound => new(
         "Delivery.Notfound", $"O entregador não foi encontrado.");
 
         public static Error NameInvalid => new(

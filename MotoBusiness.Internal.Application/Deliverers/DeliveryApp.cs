@@ -42,7 +42,7 @@ namespace MotoBusiness.Internal.Application.Deliverers
                 else if (delivery.StatusCode == HttpStatusCode.NoContent)
                 {
                     return CustomResult.NotFound(
-                        DeliveryErrors.DeliveryNotFound);
+                        DeliveryErrors.NotFound);
                 }
 
                 return delivery;
@@ -123,10 +123,10 @@ namespace MotoBusiness.Internal.Application.Deliverers
                 if (_delivery.StatusCode == HttpStatusCode.NoContent)
                 {
                     _logger.LogInformation(
-                        DeliveryErrors.DeliveryNotFound.Description);
+                        DeliveryErrors.NotFound.Description);
 
                     return CustomResult.NotFound(
-                        DeliveryErrors.DeliveryNotFound);
+                        DeliveryErrors.NotFound);
                 }
                 else if (_delivery.Data is Delivery delivery)
                 {

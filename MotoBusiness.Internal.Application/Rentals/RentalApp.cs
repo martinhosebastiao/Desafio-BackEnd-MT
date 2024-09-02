@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Net;
+using Microsoft.Extensions.Logging;
 using MotoBusiness.Internal.Domain.Core.Abstractions;
+using MotoBusiness.Internal.Domain.Core.Entities.Deliverers;
 using MotoBusiness.Internal.Domain.Core.Entities.Motorbikes;
+using MotoBusiness.Internal.Domain.Core.Entities.Rentals;
 using MotoBusiness.Internal.Domain.Core.Results;
 
 namespace MotoBusiness.Internal.Application.Rentals
@@ -22,33 +25,57 @@ namespace MotoBusiness.Internal.Application.Rentals
         {
             try
             {
-                var checkExist = await CheckIfThePlateAlreadyExistsAsync(
-                     request.plate, cancellationToken);
+                var motorbike = await _unitOfWork.MotorbikeRepository
+                    .GetByIdAsync(request.MotorbikeId, cancellationToken);
 
-                if (checkExist)
+                if (motorbike.Data is not Motorbike _motorbike)
                 {
                     _logger.LogInformation(
-                        MotorbikeErrors.ExistPlate.Description);
+                       MotorbikeErrors.NotFound.Description);
 
-                    return CustomResult.Ok(MotorbikeErrors.ExistPlate);
+                    return motorbike;
                 }
 
-                var motorbike = request.Convert();
+                var delivery = await _unitOfWork.DeliveryRepository
+                    .GetByIdAsync(request.DeliveryId, cancellationToken);
 
-                var result = await motorbikePublisher.RegisterAsync(
-                      motorbike, cancellationToken);
+                if (delivery.Data is not Delivery _delivery)
+                {
+                    _logger.LogInformation(
+                       DeliveryErrors.NotFound.Description);
+
+                    return delivery;
+                }
+
+                if (!_delivery.CheckSuitableForAllocation())
+                {
+                    _logger.LogInformation(
+                       RentalErrors.Delivery_Rental_Unauthotized.Description);
+
+                    return CustomResult.Ok(
+                        RentalErrors.Delivery_Rental_Unauthotized);
+                }
+
+                var rental = request.Convert();
+
+                var result = await _unitOfWork.RentalRepository.CreateAsync(
+                      rental, cancellationToken);
+
+                await _unitOfWork.CommitAsync();
 
                 return result;
 
             }
             catch (Exception ex)
             {
+                await _unitOfWork.RollbackAsync(cancellationToken);
+
                 var message = ex?.Message ?? ex?.InnerException?.Message;
 
                 _logger.LogError(message);
 
                 return CustomResult.Exception(
-                    new Error("RegisterAsync", message));
+                    new Error("StartAsync", message));
             }
         }
 
@@ -58,24 +85,25 @@ namespace MotoBusiness.Internal.Application.Rentals
         {
             try
             {
-                var checkExist = await CheckIfThePlateAlreadyExistsAsync(
-                     request.plate, cancellationToken);
+                var rental = await _unitOfWork.RentalRepository
+                    .GetByIdAsync(request.RentaiId, cancellationToken);
 
-                if (checkExist)
+                if (rental.Data is not Rental _rental)
                 {
                     _logger.LogInformation(
-                        MotorbikeErrors.ExistPlate.Description);
+                        RentalErrors.Notfound.Description);
 
-                    return CustomResult.Ok(MotorbikeErrors.ExistPlate);
+                    return CustomResult.NotFound(RentalErrors.Notfound);
                 }
 
-                var motorbike = request.Convert();
+                _rental.FinishRental(request.ReturnDate);
 
-                var result = await motorbikePublisher.RegisterAsync(
-                      motorbike, cancellationToken);
+                var result = await _unitOfWork.RentalRepository.UpdateAsync(
+                     _rental, cancellationToken);
+
+                await _unitOfWork.CommitAsync();
 
                 return result;
-
             }
             catch (Exception ex)
             {
