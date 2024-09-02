@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Results\" />
+    <None Remove="Abstractions\" />
+    <None Remove="Entities\" />
+    <None Remove="Entities\Motorbikes\" />
+    <None Remove="Entities\Rentals\" />
+    <None Remove="Entities\Deliverers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Results\" />
+    <Folder Include="Abstractions\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Entities\Motorbikes\" />
+    <Folder Include="Entities\Rentals\" />
+    <Folder Include="Entities\Deliverers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+  </ItemGroup>
+</Project>

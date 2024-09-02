@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Persistences\" />
+    <None Remove="Persistences\Repositores\" />
+    <None Remove="Persistences\Repositores\Abstractions\" />
+    <None Remove="Persistences\Contexts\" />
+    <None Remove="Messaging\" />
+    <None Remove="Messaging\RabbitMQ\" />
+    <None Remove="Messaging\RabbitMQ\Motorbikes\" />
+    <None Remove="Messaging\Absctrations\" />
+    <None Remove="Storages\" />
+    <None Remove="Storages\Local\" />
+    <None Remove="Messaging\RabbitMQ\Abstractions\" />
+    <None Remove="Persistences\Abstractions\" />
+    <None Remove="Storages\Abstractions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Persistences\" />
+    <Folder Include="Persistences\Repositores\" />
+    <Folder Include="Persistences\Repositores\Abstractions\" />
+    <Folder Include="Persistences\Contexts\" />
+    <Folder Include="Messaging\" />
+    <Folder Include="Messaging\RabbitMQ\" />
+    <Folder Include="Messaging\RabbitMQ\Motorbikes\" />
+    <Folder Include="Messaging\Absctrations\" />
+    <Folder Include="Storages\" />
+    <Folder Include="Storages\Local\" />
+    <Folder Include="Messaging\RabbitMQ\Abstractions\" />
+    <Folder Include="Persistences\Abstractions\" />
+    <Folder Include="Storages\Abstractions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MotoBusiness.Internal.Domain.Core\MotoBusiness.Internal.Domain.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+</Project>
