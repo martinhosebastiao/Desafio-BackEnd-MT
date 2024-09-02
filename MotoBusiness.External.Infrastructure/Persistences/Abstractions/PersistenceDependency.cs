@@ -23,7 +23,7 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Abstractions
 			services.AddDbContext<MainContext>(
 				options => options.UseNpgsql(npgConnection));
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDeliveryRepository, DeliveryRepository>();
             services.AddScoped<IMotorbikeRepository, MotorbikeRepository>();
             services.AddScoped<IRentalRepository, RentalRepository>();

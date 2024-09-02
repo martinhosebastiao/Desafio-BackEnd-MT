@@ -8,13 +8,24 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Contexts
 {
 	public class MainContext: DbContext
 	{
-		public MainContext()
-		{
-		}
+        public MainContext(DbContextOptions<MainContext> options)
+            : base(options)
+        {
+            this.ChangeTracker.LazyLoadingEnabled = false;
+        }
 
-		public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
 		public DbSet<Motorbike> Motorbikes { get; set; }
 		public DbSet<Rental> Rentals { get; set; }
+
+        protected override void OnConfiguring(
+           DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableServiceProviderCaching();
+            optionsBuilder.EnableSensitiveDataLogging();
+
+            base.OnConfiguring(optionsBuilder);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -5,11 +5,11 @@ namespace MotoBusiness.Internal.Application.Rentals
     public interface IRentalApp
 	{
         Task<CustomResult> StartAsync(
-            RegisterRequest request,
+            RentalRegisterRequest request,
             CancellationToken cancellationToken = default);
 
         Task<CustomResult> FinishAsync(
-            FinishRequest request,
+            RentalFinishRequest request,
             CancellationToken cancellationToken = default);
     }
 }

@@ -60,7 +60,7 @@ namespace MotoBusiness.Internal.Application.Deliverers
         }
 
         public async Task<CustomResult> RegisterAsync(
-            RegisterRequest request,
+            DeliveryRegisterRequest request,
             CancellationToken cancellationToken = default)
         {
             try

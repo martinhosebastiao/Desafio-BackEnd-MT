@@ -20,7 +20,7 @@ namespace MotoBusiness.Internal.Application.Rentals
         }
 
         public async Task<CustomResult> StartAsync(
-            RegisterRequest request,
+            RentalRegisterRequest request,
             CancellationToken cancellationToken = default)
         {
             try
@@ -80,7 +80,7 @@ namespace MotoBusiness.Internal.Application.Rentals
         }
 
         public async Task<CustomResult> FinishAsync(
-            FinishRequest request,
+            RentalFinishRequest request,
             CancellationToken cancellationToken = default)
         {
             try

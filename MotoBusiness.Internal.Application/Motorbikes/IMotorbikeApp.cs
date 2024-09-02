@@ -12,7 +12,7 @@ namespace MotoBusiness.Internal.Application.Motorbikes
             CancellationToken cancellationToken = default);
 
         Task<CustomResult> RegisterAsync(
-            RegisterRequest request,
+            MotorbikeRegisterRequest request,
             CancellationToken cancellationToken = default);
 
         Task<CustomResult> ChangePlateAsync(

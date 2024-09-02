@@ -2,11 +2,11 @@
 
 namespace MotoBusiness.Internal.Application.Motorbikes
 {
-    public record RegisterRequest(string model, string plate, short year)
+    public record MotorbikeRegisterRequest(string Model, string Plate, short Year)
     {
         public Motorbike Convert()
         {
-            var motorbike = new Motorbike(model, plate, year);
+            var motorbike = new Motorbike(Model, Plate, Year);
 
             return motorbike;
         }

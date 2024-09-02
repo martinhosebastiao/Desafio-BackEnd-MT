@@ -10,7 +10,7 @@ namespace MotoBusiness.Internal.Application.Deliverers
             CancellationToken cancellationToken = default);
 
         Task<CustomResult> RegisterAsync(
-            RegisterRequest request,
+            DeliveryRegisterRequest request,
             CancellationToken cancellationToken = default);
 
         Task<CustomResult> UpdateCNHAsync(

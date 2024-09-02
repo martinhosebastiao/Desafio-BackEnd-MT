@@ -10,7 +10,7 @@ namespace MotoBusiness.External.Infrastructure.Messaging.Absctrations
         public static IServiceCollection AddMessaging(
             this IServiceCollection services)
         {
-            services.AddHostedService<MotorbikeConsumer>();
+            services.AddTransient<MotorbikeConsumer>();
             services.AddScoped<IMotorbikePublisher, MotorbikePublisher>();
 
             return services;

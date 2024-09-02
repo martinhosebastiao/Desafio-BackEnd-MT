@@ -37,7 +37,7 @@ namespace MotoBusiness.External.Presentation.API.Controllers
         /// <param name="plate"></param>
         /// <returns></returns>
         [HttpGet("{plate}")]
-        public async Task<IActionResult> Get(
+        public async Task<IActionResult> GetFilterByPlateAsync(
             string plate, CancellationToken cancellationToken)
         {
             var result = await _motorbikeApp.GetMotorbikeAsync(
@@ -48,8 +48,8 @@ namespace MotoBusiness.External.Presentation.API.Controllers
 
         // POST api/values
         [HttpPost("register")]
-        public async Task<IActionResult> Post(
-            [FromBody] RegisterRequest request,
+        public async Task<IActionResult> RegisterAsync(
+            [FromBody] MotorbikeRegisterRequest request,
             CancellationToken cancellationToken)
         {
             var result = await _motorbikeApp.RegisterAsync(
@@ -62,10 +62,12 @@ namespace MotoBusiness.External.Presentation.API.Controllers
         /// <summary>
         /// Alterar a placa da moto
         /// </summary>
-        /// <param name="id">Identificador da moto</param>
-        /// <param name="value"></param>
+        /// <param name="id"></param>
+        /// <param name="plate"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPut("changeplate/{id}")]
-        public async Task<IActionResult> Put(
+        public async Task<IActionResult> ChangePlateAsync(
             int id, [FromBody] string plate,
             CancellationToken cancellationToken)
         {

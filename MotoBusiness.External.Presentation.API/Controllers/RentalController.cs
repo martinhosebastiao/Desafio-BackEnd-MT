@@ -1,7 +1,5 @@
-﻿using System.Threading;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MotoBusiness.Internal.Application.Rentals;
-using MotoBusiness.Internal.Domain.Core.Entities.Deliverers;
 
 
 namespace MotoBusiness.External.Presentation.API.Controllers
@@ -25,7 +23,7 @@ namespace MotoBusiness.External.Presentation.API.Controllers
         /// <returns></returns>
         [HttpPost("start")]
         public async Task<IActionResult> Post(
-            [FromBody] RegisterRequest request,
+            [FromBody] RentalRegisterRequest request,
             CancellationToken cancellationToken)
         {
             var result = await _rentalApp.StartAsync(
@@ -46,7 +44,7 @@ namespace MotoBusiness.External.Presentation.API.Controllers
             int id, [FromBody] DateTime returnDate,
             CancellationToken cancellationToken)
         {
-            var request = new FinishRequest(id, returnDate);
+            var request = new RentalFinishRequest(id, returnDate);
 
             var result = await _rentalApp.FinishAsync(
                request, cancellationToken);

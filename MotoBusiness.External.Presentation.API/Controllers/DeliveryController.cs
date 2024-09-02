@@ -39,7 +39,7 @@ namespace MotoBusiness.External.Presentation.API.Controllers
         /// <param name="request"></param>
         [HttpPost("register")]
         public async Task<IActionResult> Post(
-            [FromBody] RegisterRequest request,
+            [FromBody] DeliveryRegisterRequest request,
             CancellationToken cancellationToken)
         {
             var result = await _deliveryApp.RegisterAsync(

@@ -4,7 +4,7 @@ using MotoBusiness.Internal.Domain.Core.Entities.Rentals;
 
 namespace MotoBusiness.Internal.Application.Rentals
 {
-    public record RegisterRequest(int MotorbikeId,int DeliveryId,short PlainDays)
+    public record RentalRegisterRequest(int MotorbikeId,int DeliveryId,short PlainDays)
     {
         public Rental Convert()
         {
@@ -14,6 +14,6 @@ namespace MotoBusiness.Internal.Application.Rentals
         }
     };
 
-    public record FinishRequest(int RentaiId, DateTime ReturnDate);
+    public record RentalFinishRequest(int RentaiId, DateTime ReturnDate);
 }
 

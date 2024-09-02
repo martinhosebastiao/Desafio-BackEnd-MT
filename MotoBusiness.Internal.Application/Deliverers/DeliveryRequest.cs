@@ -2,7 +2,7 @@
 
 namespace MotoBusiness.Internal.Application.Deliverers
 {
-    public record RegisterRequest(string Name, string CNPJ, DateTime BirthDate,
+    public record DeliveryRegisterRequest(string Name, string CNPJ, DateTime BirthDate,
         string CNHNumber, CNHType CNHType)
     {
         public Delivery Convert()

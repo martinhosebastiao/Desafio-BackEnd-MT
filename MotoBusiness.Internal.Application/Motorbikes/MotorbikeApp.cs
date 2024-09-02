@@ -67,13 +67,13 @@ namespace MotoBusiness.Internal.Application.Motorbikes
         }
 
         public async Task<CustomResult> RegisterAsync(
-            RegisterRequest request,
+            MotorbikeRegisterRequest request,
             CancellationToken cancellationToken = default)
         {
             try
             {
                 var checkExist = await CheckIfThePlateAlreadyExistsAsync(
-                     request.plate, cancellationToken);
+                     request.Plate, cancellationToken);
 
                 if (checkExist)
                 {
