@@ -80,7 +80,8 @@ namespace MotoBusiness.Internal.Application.Motorbikes
                     _logger.LogInformation(
                         MotorbikeErrors.ExistPlate.Description);
 
-                    return CustomResult.Ok(MotorbikeErrors.ExistPlate);
+                    return CustomResult.ExpectationFailed(
+                        MotorbikeErrors.ExistPlate);
                 }
 
                 var motorbike = request.Convert();
@@ -122,7 +123,8 @@ namespace MotoBusiness.Internal.Application.Motorbikes
                         _logger.LogInformation(
                             MotorbikeErrors.ExistPlate.Description);
 
-                        return CustomResult.Ok(MotorbikeErrors.ExistPlate);
+                        return CustomResult.ExpectationFailed(
+                            MotorbikeErrors.ExistPlate);
                     }
 
                     if (_motorbike.Data is Motorbike motorbike)
@@ -180,7 +182,8 @@ namespace MotoBusiness.Internal.Application.Motorbikes
                 {
                     _logger.LogError(MotorbikeErrors.ExistRetail.Description);
 
-                    return CustomResult.Ok(MotorbikeErrors.ExistRetail);
+                    return CustomResult.ExpectationFailed(
+                                MotorbikeErrors.ExistRetail);
                 }
                 else if (checkExistRental.StatusCode == HttpStatusCode.OK)
                 {

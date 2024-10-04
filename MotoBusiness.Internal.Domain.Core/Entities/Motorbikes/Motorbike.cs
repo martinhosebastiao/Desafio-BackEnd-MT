@@ -18,7 +18,7 @@ namespace MotoBusiness.Internal.Domain.Core.Entities.Motorbikes
             Rentals = new();
         }
 
-        public int DevileryId { get; private set; }
+        public int MotorbikeId { get; private set; }
         public short Year { get; private set; }
         public string Model { get; private set; } = default!;
         public string Plate { get; private set; } = default!;

@@ -20,7 +20,7 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Repositores.Abstract
         }
 
         public async Task<CustomResult> GetsAsync(
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken = default)
         {
             var response = await _context.Set<TEntity>()
                 .ToListAsync(cancellationToken);
@@ -31,7 +31,7 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Repositores.Abstract
         }
 
         public async Task<CustomResult> GetByIdAsync<T>(
-            T primaryKey, CancellationToken cancellationToken)
+            T primaryKey, CancellationToken cancellationToken = default)
         {
             var response = await _context.Set<TEntity>().FindAsync(
                 primaryKey, cancellationToken);
@@ -53,7 +53,7 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Repositores.Abstract
         }
 
         public async Task<CustomResult> CreateAsync(
-            TEntity entity, CancellationToken cancellationToken)
+            TEntity entity, CancellationToken cancellationToken = default)
         {
             var response = await _context.Set<TEntity>()
                 .AddAsync(entity, cancellationToken);
@@ -64,7 +64,7 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Repositores.Abstract
         }
 
         public async Task<CustomResult> UpdateAsync(
-            TEntity entity, CancellationToken cancellationToken)
+            TEntity entity, CancellationToken cancellationToken = default)
         {
             var response = _context.Set<TEntity>().Update(entity);
 
@@ -76,7 +76,7 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Repositores.Abstract
         }
 
         public async Task<CustomResult> DeleteAsync(
-            TEntity entity, CancellationToken cancellationToken)
+            TEntity entity, CancellationToken cancellationToken = default)
         {
             var response = _context.Set<TEntity>().Remove(entity);
 

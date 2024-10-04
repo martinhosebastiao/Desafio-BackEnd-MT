@@ -5,7 +5,8 @@ namespace MotoBusiness.Internal.Domain.Core.Abstractions
     public interface IBaseRepository<TEntity> : IDisposable where TEntity
         : class
     {
-        Task<CustomResult> GetsAsync(CancellationToken cancellationToken);
+        Task<CustomResult> GetsAsync(
+            CancellationToken cancellationToken = default);
 
         Task<CustomResult> GetByIdAsync<T>(
             T id, CancellationToken cancellationToken);
@@ -13,13 +14,13 @@ namespace MotoBusiness.Internal.Domain.Core.Abstractions
         Task<CustomResult> GetQueryableAsync();
 
         Task<CustomResult> CreateAsync(
-            TEntity obj, CancellationToken cancellationToken);
+            TEntity obj, CancellationToken cancellationToken = default);
 
         Task<CustomResult> UpdateAsync(
-            TEntity obj, CancellationToken cancellationToken);
+            TEntity obj, CancellationToken cancellationToken = default);
 
         Task<CustomResult> DeleteAsync(
-            TEntity obj, CancellationToken cancellationToken);
+            TEntity obj, CancellationToken cancellationToken = default);
     }
 }
 

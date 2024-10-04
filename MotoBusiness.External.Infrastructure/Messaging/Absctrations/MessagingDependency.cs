@@ -8,7 +8,7 @@ namespace MotoBusiness.External.Infrastructure.Messaging.Absctrations
     public static class MessagingDependency
 	{
         public static IServiceCollection AddMessaging(
-            this IServiceCollection services)
+            this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<MotorbikeConsumer>();
             services.AddScoped<IMotorbikePublisher, MotorbikePublisher>();

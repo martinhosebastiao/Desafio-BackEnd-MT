@@ -2,7 +2,10 @@
 {
     public sealed class CNH
     {
+        
         private readonly List<string> _errors = new();
+
+        protected CNH()  { }
 
         public CNH(string number, CNHType type, string? url = null)
         {
