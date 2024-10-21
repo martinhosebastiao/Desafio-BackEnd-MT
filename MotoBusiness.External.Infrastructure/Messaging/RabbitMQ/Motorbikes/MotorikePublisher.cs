@@ -17,7 +17,7 @@ namespace MotoBusiness.External.Infrastructure.Messaging.RabbitMQ.Motorbikes
         }
 
         public async Task<CustomResult> RegisterAsync(
-            Motorbike motorbike, CancellationToken cancellationToken)
+            Motorbike motorbike, CancellationToken cancellationToken = default)
         {
             try
             {

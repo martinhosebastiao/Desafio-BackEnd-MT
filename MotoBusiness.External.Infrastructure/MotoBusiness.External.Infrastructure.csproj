@@ -20,6 +20,7 @@
     <None Remove="Messaging\RabbitMQ\Abstractions\" />
     <None Remove="Persistences\Abstractions\" />
     <None Remove="Storages\Abstractions\" />
+    <None Remove="Persistences\Configurations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Persistences\" />
@@ -35,6 +36,7 @@
     <Folder Include="Messaging\RabbitMQ\Abstractions\" />
     <Folder Include="Persistences\Abstractions\" />
     <Folder Include="Storages\Abstractions\" />
+    <Folder Include="Persistences\Configurations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MotoBusiness.Internal.Domain.Core\MotoBusiness.Internal.Domain.Core.csproj" />

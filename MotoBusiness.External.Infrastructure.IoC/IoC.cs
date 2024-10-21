@@ -13,7 +13,7 @@ public static class IoC
         this IServiceCollection services, IConfiguration configuration)
     {
         services.AddStorage();
-        services.AddMessaging();
+        services.AddMessaging(configuration);
         services.AddApplication();
         services.AddPersistence(configuration);
 

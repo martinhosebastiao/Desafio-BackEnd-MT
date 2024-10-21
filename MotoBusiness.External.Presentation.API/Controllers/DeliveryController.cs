@@ -57,7 +57,7 @@ namespace MotoBusiness.External.Presentation.API.Controllers
         [HttpPut("uploadcnh/{id}")]
         public async Task<IActionResult> Put(
             int id,
-            [FromForm] IFormFile cnhImage,
+            [FromForm] FormFile cnhImage,
             CancellationToken cancellationToken)
         {
             var result = await _deliveryApp.UpdateCNHAsync(

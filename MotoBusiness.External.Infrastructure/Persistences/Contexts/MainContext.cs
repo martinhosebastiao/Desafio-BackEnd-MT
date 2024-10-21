@@ -1,17 +1,16 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using MotoBusiness.External.Infrastructure.Persistences.Configurations;
 using MotoBusiness.Internal.Domain.Core.Entities.Deliverers;
 using MotoBusiness.Internal.Domain.Core.Entities.Motorbikes;
 using MotoBusiness.Internal.Domain.Core.Entities.Rentals;
 
 namespace MotoBusiness.External.Infrastructure.Persistences.Contexts
 {
-	public class MainContext: DbContext
+    public class MainContext: DbContext
 	{
         public MainContext(DbContextOptions<MainContext> options)
             : base(options)
         {
-            this.ChangeTracker.LazyLoadingEnabled = false;
         }
 
         public DbSet<Delivery> Deliveries { get; set; }
@@ -29,9 +28,12 @@ namespace MotoBusiness.External.Infrastructure.Persistences.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-			modelBuilder.Entity<Motorbike>().HasIndex(x=> x.Plate).IsUnique();
-			modelBuilder.Entity<Delivery>().HasIndex(x=> x.CNPJ).IsUnique();
-			modelBuilder.Entity<Delivery>().HasIndex(x=> x.CNH.Number).IsUnique();
+            modelBuilder.HasDefaultSchema("mb");
+            modelBuilder.UsePropertyAccessMode(PropertyAccessMode.Property);
+
+            modelBuilder.ApplyConfiguration(new DeliveryConfiguration());
+            modelBuilder.ApplyConfiguration(new RentalConfiguration());
+            modelBuilder.ApplyConfiguration(new MotorbikeConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

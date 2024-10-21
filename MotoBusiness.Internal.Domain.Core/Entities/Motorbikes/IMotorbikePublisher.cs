@@ -6,6 +6,6 @@ namespace MotoBusiness.Internal.Domain.Core.Entities.Motorbikes
     public interface IMotorbikePublisher
 	{
 		Task<CustomResult> RegisterAsync(
-			Motorbike motorbike, CancellationToken cancellationToken);
+			Motorbike motorbike, CancellationToken cancellationToken = default);
 	}
 }

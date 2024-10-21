@@ -7,7 +7,7 @@ namespace MotoBusiness.External.Presentation.API.Controllers
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("v{version:apiVersion}/[controller]")]
     [ApiConventionType(typeof(DefaultApiConventions))]
     public abstract class BaseController<TEntity> : ControllerBase where
         TEntity : class
